@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+    <div id="container">
+        {% for quote in my_quotes %}
+        <h4>Posts by {{ quote.submitter.email }}</h4>
+        <p>Quotes: {{ quote.quotedby }} <p></p>{{ quote.quotedescription }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

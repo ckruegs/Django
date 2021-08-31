@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Quote</title>
+</head>
+<body>
+    <div id="container">
+        <h2>Hey {{ logged_in_user.email }}! Let's edit your quote!</h2>
+        <div class="links">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <ul class="errors">
+        {% for message in messages %}
+        <li><p style="color: red;">{{ message }}</p></li>
+        {% endfor %}
+    </ul>
+    <div>
+        <h3>Edit Quote:</h3>
+        <form action="/quotes/{{ quote.id }}/update" method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="quotedby">Quoted By:</label>
+                <input type="text" name="quotedby">
+            </div>
+            <div>
+                <label for="quotedescription">Description:</label>
+                <input type="text" name="quotedescription">
+            </div>
+            <a href="/dashboard" class="button">Cancel</a>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>
